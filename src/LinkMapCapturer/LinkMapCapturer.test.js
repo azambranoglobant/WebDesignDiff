@@ -11,11 +11,15 @@ var mockedBrowserProvider = {
             thenOpen: function (url, callback) {
                 callback();
             },
-            run: function () {
+            run: function (callback) {
                 // TODO: Dummy function.
+                callback();
             },
             capture: function (filePath) {
                 // TODO: Dummy function.
+            },
+            close: function(){
+                
             }
         };
     }
