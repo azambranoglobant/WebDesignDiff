@@ -1,13 +1,37 @@
+var ScreenCapturer = require('./ScreenCapturer');
 var expect = require('chai').expect;
 
-describe('My first test', function(){
-    it('Should sum', function(){
-        var sum = 2 + 3;
-        expect(sum).to.equal(5);
+var mockedBrowserProvider = {
+    getBrowser: function() {
+        return {
+            start: function(){
+                // TODO: does nothing.
+            },
+            then: function(){
+                // TODO: does nothing.
+            },
+            run: function(){
+                // TODO: does nothing.
+            }
+        };
+    }
+};
+
+describe('ScreenCapturer', function() {
+    it('can be required', function(){
+        expect(ScreenCapturer).to.exist;
+        expect(ScreenCapturer).to.be.instanceOf(Function);
     });
 
-    it('Should substract', function(){
-        var substract = 4 - 1;
-        expect(substract).to.equal(3);
+    it('can be instantiated', function() {
+        var instance = new ScreenCapturer();
+
+        expect(instance).to.exist;
+        expect(instance).to.be.instanceOf(ScreenCapturer);
+    });
+
+    it('produces screenshot from URL', function(){
+        var screenCapturer = new ScreenCapturer(mockedBrowserProvider);
+        screenCapturer.takeScreenshot('https://google.com', 'google.png');
     });
 });
